@@ -1,8 +1,9 @@
 class Building
-    attr_reader :units, :renters
-    def initialize(units= [], renters= [])
+    attr_reader :units, :renters, :rented_units
+    def initialize(units= [], renters= [], rented_units= [])
         @units = units
         @renters =  renters
+        @rented_units = rented_units
     end
 
     def add_unit(unit)
@@ -24,6 +25,7 @@ class Building
         end
         total_rent.sum / total_rent.count.round(1)
     end
+
 end
 
 # building.units[0].renter.name
