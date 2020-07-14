@@ -18,7 +18,7 @@ class BuildingTest < Minitest::Test
     assert_equal [] , building.units
   end
 
-  def test_
+  def test_it_can_add_units
     building = Building.new
     unit1 = Apartment.new({number: "A1", monthly_rent: 1200, bathrooms: 1, bedrooms: 1})
     unit2 = Apartment.new({number: "B2", monthly_rent: 999, bathrooms: 2, bedrooms: 2})
@@ -27,5 +27,11 @@ class BuildingTest < Minitest::Test
     building.add_unit(unit2)
 
     assert_equal [unit1, unit2] , building.units
+  end
+
+  def test_it_starts_without_renters
+    building = Building.new
+
+    assert_equal [] , building.renters
   end
 end

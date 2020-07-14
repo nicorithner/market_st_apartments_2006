@@ -1,7 +1,8 @@
 class Building
-    attr_reader :units
-    def initialize(units= [])
+    attr_reader :units, :renters
+    def initialize(units= [], renters= [])
         @units = units
+        @renters = renters
     end
 
     def add_unit(unit)
