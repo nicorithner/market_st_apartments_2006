@@ -16,6 +16,14 @@ class Building
             end
         end
     end
+
+    def average_rent
+        total_rent = []
+        @units.map do |unit|
+           total_rent << unit.apt_info[:monthly_rent].to_f
+        end
+        total_rent.sum / total_rent.count.round(1)
+    end
 end
 
 # building.units[0].renter.name
