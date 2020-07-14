@@ -13,7 +13,6 @@ class Building
         @units.map do |unit|
             unless unit.renter.name == nil
                 name = unit.renter.name
-                return @renters << name
             end
         end
     end
