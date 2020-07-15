@@ -52,12 +52,12 @@ class Building
 
     def units_by_number_of_bedrooms
             ## => shorter version
-        units_by_beds = Hash.new { |h, k| h[k] = []}
+        # units_by_beds = Hash.new { |h, k| h[k] = []}
 
-            @units.each do |unit| 
-                units_by_beds[unit.bedrooms] << unit.number
-            end
-            units_by_beds
+        #     @units.each do |unit| 
+        #         units_by_beds[unit.bedrooms] << unit.number
+        #     end
+        #     units_by_beds
 
             ## => longer version
         # units_by_beds = {}
@@ -70,6 +70,15 @@ class Building
         #     end
         # end
         # units_by_beds
+
+        ## =>  version with reduce
+        # units_by_beds = Hash.new { |h, k| h[k] = []}
+
+        @units.reduce(Hash.new { |h, k| h[k] = []}) do |units_by_beds, unit|
+                units_by_beds[unit.bedrooms] << unit.number
+            units_by_beds
+        end
+            
     end
 
 
