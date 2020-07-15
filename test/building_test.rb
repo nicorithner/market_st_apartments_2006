@@ -142,7 +142,7 @@ class BuildingTest < Minitest::Test
   end
 
   def test_units_by_number_of_bedrooms
-    skip
+    # skip 
     building = Building.new
     unit1 = Apartment.new({number: "A1", monthly_rent: 1200, bathrooms: 1, bedrooms: 1})
     unit2 = Apartment.new({number: "B2", monthly_rent: 999, bathrooms: 1, bedrooms: 2})

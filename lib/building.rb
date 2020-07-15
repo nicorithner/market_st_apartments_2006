@@ -51,17 +51,25 @@ class Building
     end
 
     def units_by_number_of_bedrooms
-       output = {}
-     number_bedrooms = @units.map do |unit|
-        unit.bedrooms 
-        end.uniq.reverse
+            ## => shorter version
+        units_by_beds = Hash.new { |h, k| h[k] = []}
 
-      unit_number = @units.map do |unit|
-            unit.number 
-        end
-        p unit_number
-        p number_bedrooms
-        # output
+            @units.each do |unit| 
+                units_by_beds[unit.bedrooms] << unit.number
+            end
+            units_by_beds
+
+            ## => longer version
+        # units_by_beds = {}
+
+        # @units.each do |unit|
+        #     if units_by_beds[unit.bedrooms]
+        #         units_by_beds[unit.bedrooms] << unit.number
+        #     else 
+        #         units_by_beds[unit.bedrooms] = [unit.number]
+        #     end
+        # end
+        # units_by_beds
     end
 
 
