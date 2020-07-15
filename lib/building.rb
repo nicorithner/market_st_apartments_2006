@@ -1,8 +1,7 @@
 class Building
-    attr_reader :units, :renters, :rented_units
+    attr_reader :units, :rented_units
     def initialize(units= [], renters= [], rented_units= [])
         @units = units
-        @renters =  renters
         @rented_units = rented_units
     end
 
@@ -11,36 +10,24 @@ class Building
     end
 
     def renters
-        # @units.map do |unit|
-        #     unless unit.renter.name == nil
-        #         name = unit.renter.name
-        #     end
-        # end
-
-    #    rented = @units.find_all do |unit|
-    #         unit.renter
-    #     end
-    #     # binding.pry
-    #     rented.map do |unit|
-    #         unit.renter.name
-    #     end
+        
         renters_names = @units.map do |unit|
-            if unit.renter
-                unit.renter.name
-            else 
-                nil
-            end
+                unit.renter.name if unit.renter
         end
         renters_names.compact
     
     end
 
     def average_rent
-        total_rent = []
-        @units.map do |unit|
-           total_rent << unit.monthly_rent.to_f
+        # total_rent = []
+        # @units.map do |unit|
+        #    total_rent << unit.monthly_rent.to_f
+        # end
+        # total_rent.sum / total_rent.count.round(1)
+        total = @units.sum do |unit|
+            unit.monthly_rent
         end
-        total_rent.sum / total_rent.count.round(1)
+        (total.to_f / @units.count).round(1)
     end
 
     def rented_units
