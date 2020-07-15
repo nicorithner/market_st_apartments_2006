@@ -1,8 +1,7 @@
 class Building
-    attr_reader :units, :rented_units
+    attr_reader :units
     def initialize(units= [], renters= [], rented_units= [])
         @units = units
-        @rented_units = rented_units
     end
 
     def add_unit(unit)
@@ -38,12 +37,17 @@ class Building
 
     def renter_with_highest_rent
         # binding.pry
-        highest_paying_renter = []
-        highest_paying_renter << rented_units.max do |a, b|
-            a.monthly_rent <=> b.monthly_rent
-        end
+        highest_rent = rented_units.max_by do |unit| 
+            unit.monthly_rent
+        end.renter 
+        # highest_rent.renter 
+
+        # highest_paying_renter = []
+        # highest_paying_renter << rented_units.max do |a, b|
+        #     a.monthly_rent <=> b.monthly_rent
+        # end
         
-        highest_paying_renter[0].renter
+        # highest_paying_renter[0].renter
     end
 
     def units_by_number_of_bedrooms

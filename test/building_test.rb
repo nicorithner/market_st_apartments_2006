@@ -93,7 +93,7 @@ class BuildingTest < Minitest::Test
     assert_equal [], building.rented_units
   end
 
-  def test_it_can_start_without_rented_units
+  def test_it_can_have_rented_units
     building = Building.new
     unit1 = Apartment.new({number: "A1", monthly_rent: 1200, bathrooms: 1, bedrooms: 1})
     unit2 = Apartment.new({number: "B2", monthly_rent: 999, bathrooms: 1, bedrooms: 2})
