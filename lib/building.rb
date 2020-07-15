@@ -16,13 +16,23 @@ class Building
         #         name = unit.renter.name
         #     end
         # end
-       rented = @units.find_all do |unit|
-            unit.renter
+
+    #    rented = @units.find_all do |unit|
+    #         unit.renter
+    #     end
+    #     # binding.pry
+    #     rented.map do |unit|
+    #         unit.renter.name
+    #     end
+        renters_names = @units.map do |unit|
+            if unit.renter
+                unit.renter.name
+            else 
+                nil
+            end
         end
-        # binding.pry
-        rented.map do |unit|
-            unit.renter.name
-        end
+        renters_names.compact
+    
     end
 
     def average_rent
@@ -46,8 +56,23 @@ class Building
             a.monthly_rent <=> b.monthly_rent
         end
         
-        p highest_paying_renter[0].renter
+        highest_paying_renter[0].renter
     end
+
+    def units_by_number_of_bedrooms
+       output = {}
+     number_bedrooms = @units.map do |unit|
+        unit.bedrooms 
+        end.uniq.reverse
+
+      unit_number = @units.map do |unit|
+            unit.number 
+        end
+        p unit_number
+        p number_bedrooms
+        # output
+    end
+
 
 end
 
