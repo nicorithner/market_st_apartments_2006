@@ -39,6 +39,16 @@ class Building
         end
     end
 
+    def renter_with_highest_rent
+        # binding.pry
+        highest_paying_renter = []
+        highest_paying_renter << rented_units.max do |a, b|
+            a.monthly_rent <=> b.monthly_rent
+        end
+        
+        p highest_paying_renter[0].renter
+    end
+
 end
 
 # building.units[0].renter.name
